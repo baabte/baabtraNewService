@@ -37,12 +37,12 @@ def Login(request):
                 else:
                     real_ip = request.META.get('REMOTE_ADDR')
                 LoginData['ip'] = real_ip
-                #LoginData['loginCredential']['domainName'] = urlparse(request.META.get('HTTP_REFERER')).hostname;
+                LoginData['domainName'] = urlparse(request.META.get('HTTP_REFERER')).hostname;
                 
                 # firstString = LoginData['domainName'].split('.')[0];
 
-                #if LoginData['loginCredential']['domainName'].split('.')[0] == 'www':
-                   # LoginData['loginCredential']['domainName'] = LoginData['loginCredential']['domainName'].strip('www.');
+                if LoginData['domainName'].split('.')[0] == 'www':
+                   LoginData['domainName'] = LoginData['domainName'].strip('www.');
 
                 log = dbconn.system_js.fnDomainLogin(LoginData)
             except Exception as e:
