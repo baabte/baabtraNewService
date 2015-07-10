@@ -24,6 +24,7 @@ from pymongo import Connection
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 from django.conf import settings
+from urlparse import urlparse
 
 #created by jihin
 #For global values
@@ -221,9 +222,32 @@ def checkDomainExitsView(request):
     dbconn = db[settings.MONGO_DB]
 
     if request.method == 'POST':
+        #urlparse(request.META.get('HTTP_REFERER')).hostname.split('.')[0]
+        
         stream = StringIO(request.body)
         data = JSONParser().parse(stream)
         DomainExits = dbconn.system_js.fnCheckDomainExits(data['domainName']);
+        return Response(json.dumps(DomainExits, default=json_util.default))
+    else:    
+        return Response("failure")
+
+
+#created by jihin
+#For check User Id Existence 
+@csrf_exempt
+@api_view(['GET','POST'])
+def checkUserIdExistenceView(request):
+    #connect to our local mongodb
+    db = Connection(settings.MONGO_SERVER_ADDR,settings.MONGO_PORT)
+    #get a connection to our database
+    dbconn = db[settings.MONGO_DB]
+
+    if request.method == 'POST':
+        #urlparse(request.META.get('HTTP_REFERER')).hostname.split('.')[0]
+        
+        stream = StringIO(request.body)
+        data = JSONParser().parse(stream)
+        DomainExits = dbconn.system_js.fncheckUserIdExistenceView(data['userId']);
         return Response(json.dumps(DomainExits, default=json_util.default))
     else:    
         return Response("failure")
