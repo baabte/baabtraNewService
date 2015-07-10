@@ -14,6 +14,7 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 from django.conf import settings
 from django.core.mail import EmailMessage
+from urlparse import urlparse
 
 #created by midhun sudhakar
 #on 13-10-14
@@ -25,9 +26,9 @@ def Login(request):
         #get a connection to our database
         dbconn = db[settings.MONGO_DB]
         if request.method == 'POST':
-            stream =StringIO(request.body)
+            stream = StringIO(request.body)
             data = JSONParser().parse(stream) 
-            LoginData=data["loginData"]
+            LoginData = data["loginData"]
             try:
                 
                 x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
@@ -35,8 +36,15 @@ def Login(request):
                     real_ip = x_forwarded_for.split(',')[0]
                 else:
                     real_ip = request.META.get('REMOTE_ADDR')
-                LoginData['ip']=real_ip
-                log = dbconn.system_js.fnLogin(LoginData)
+                LoginData['ip'] = real_ip
+                #LoginData['loginCredential']['domainName'] = urlparse(request.META.get('HTTP_REFERER')).hostname;
+                
+                # firstString = LoginData['domainName'].split('.')[0];
+
+                #if LoginData['loginCredential']['domainName'].split('.')[0] == 'www':
+                   # LoginData['loginCredential']['domainName'] = LoginData['loginCredential']['domainName'].strip('www.');
+
+                log = dbconn.system_js.fnDomainLogin(LoginData)
             except Exception as e:
                 return Response(str(e))
             return Response(json.dumps(log, default=json_util.default))
