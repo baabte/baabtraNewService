@@ -175,8 +175,9 @@ urlpatterns = patterns('',
     url(r'^loadOrderFormById/$', 'myapp.user.loadOrderFormByIdView', name='loadOrderFormById'), #for load Order Form By Id 
     
     url(r'^verifyCandidateByCourse/$', 'myapp.user.verifyCandidateByCourse', name='verifyCandidateByCourse'), #for verifying order form by course Created by Lijin
+    url(r'^fnSaveCandidateMapping/$', 'myapp.user.fnSaveCandidateMapping', name='fnSaveCandidateMapping'), #for saving parent-candidate mapping into parent's user details, Created by Lijin
     url(r'^fnLoadParents/$', 'myapp.user.fnLoadParents', name='fnLoadParents'), #for loading parents, Created by Lijin
-    
+    url(r'^fnLoadMappedCandidatesForParent/$', 'myapp.user.fnLoadMappedCandidatesForParent', name='fnLoadMappedCandidatesForParent'), #for loading candidates that are mapped to a parent, Created by Lijin
     url(r'^loadBatches/$', 'myapp.Batches.loadBatches', name='loadBatches'), #for loading batches
     url(r'^loadExistingCoursesUnderBatch/$', 'myapp.Batches.loadExistingCoursesUnderBatch', name='loadExistingCoursesUnderBatch'), #for loading batches
     url(r'^addCoursesToBatch/$', 'myapp.Batches.addCoursesToBatch', name='addCoursesToBatch'), #for adding courses to batch
@@ -237,6 +238,8 @@ urlpatterns = patterns('',
     url(r'^LoadCoureBatchByBatchId/$', 'myapp.Batches.LoadCoureBatchByBatchIdView', name='LoadCoureBatchByBatchId'), #for Load Coure Batch By Batch Id
     url(r'^saveBatchTimelineChanges/$', 'myapp.Batches.saveBatchTimelineChangesView', name='saveBatchTimelineChanges'), #for save Batch Timeline Changes
     url(r'^LoadUserCourseDetails/$', 'myapp.Batches.LoadUserCourseDetailsView', name='LoadUserCourseDetails'), #for Load User Course Details
+    url(r'^userCourseDetailsOF/$', 'myapp.payment.userCourseDetailsOFView', name='userCourseDetailsOF'), #by lijin
+    
     url(r'^loadUserProfileDetails/$', 'myapp.baabtraComProfile.loadUserProfileDetailsView', name='loadUserProfileDetails'),
     url(r'^baabtraComProfileData/$', 'myapp.baabtraComProfile.baabtraComProfileData', name='baabtraComProfileData'),
     url(r'^changelanguage/$', 'myapp.profile.changelanguage', name='changelanguage'),
@@ -273,5 +276,13 @@ urlpatterns = patterns('',
     url(r'^sendBatchStatusUpdateMail/$', 'myapp.emailSms.sendBatchStatusUpdateMail', name='sendBatchStatusUpdateMail') #by Lijin on 9-6-2015 for sending email notification on batch status update.
 
 )+ static('/files/', document_root=settings.FILEUPLOAD_PATH)
+
+
+urlpatterns += patterns('',
+    # Examples:
+    # url(r'^$', 'Djproject.views.home', name='home'),
+    url(r'^loadHomeScreenMenu/$', 'myapp.homescreen.loadHomeScreenMenu', name='loadHomeScreenMenu'),#Lijin
+    url(r'^saveHomeScreenMenu/$', 'myapp.homescreen.saveHomeScreenMenu', name='saveHomeScreenMenu'),#Lijin
+)
 
 
