@@ -285,6 +285,7 @@ urlpatterns += patterns('',
     # url(r'^$', 'Djproject.views.home', name='home'),
     url(r'^loadHomeScreenMenu/$', 'myapp.homescreen.loadHomeScreenMenu', name='loadHomeScreenMenu'),#Lijin
     url(r'^saveHomeScreenMenu/$', 'myapp.homescreen.saveHomeScreenMenu', name='saveHomeScreenMenu'),#Lijin
+    url(r'^mobileLogin/$', 'myapp.loginLogoutRealted.mobileLogin', name='mobileLogin'),  #URL for the login from mobile app - Lijin
 )
 
 
