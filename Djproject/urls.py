@@ -285,6 +285,9 @@ urlpatterns += patterns('',
     # url(r'^$', 'Djproject.views.home', name='home'),
     url(r'^loadHomeScreenMenu/$', 'myapp.homescreen.loadHomeScreenMenu', name='loadHomeScreenMenu'),#Lijin
     url(r'^saveHomeScreenMenu/$', 'myapp.homescreen.saveHomeScreenMenu', name='saveHomeScreenMenu'),#Lijin
+    url(r'^FetchCurrentStatus/$', 'myapp.statusRelated.FetchCurrentStatusView', name='FetchCurrentStatus'),#Arun
+    url(r'^SetStatus/$', 'myapp.statusRelated.SetStatusView', name='SetStatus')#Arun
+  
 )
 
 
