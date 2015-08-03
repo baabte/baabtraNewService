@@ -269,7 +269,6 @@ urlpatterns = patterns('',
     url(r'^FetchAllQuestionBundles/$', 'myapp.questionBankReletedViews.FetchAllQuestionBundlesView', name='FetchAllQuestionBundles'),
     url(r'^ModifyQuestionBundles/$', 'myapp.questionBankReletedViews.ModifyQuestionBundlesView', name='ModifyQuestionBundles'),
     url(r'^FetchQuestionBankList/$', 'myapp.questionBankReletedViews.FetchQuestionBankListView', name='FetchQuestionBankList'),
-
     url(r'^fnSubmitAssignment/$', 'myapp.assignmentFunctions.fnSubmitAssignment', name='fnSubmitAssignment'),
     url(r'^fnAddToQuestionBank/$', 'myapp.interviewFunctions.fnAddToQuestionBank', name='fnAddToQuestionBank'),
     url(r'^fnDeleteFromQuestionBank/$', 'myapp.interviewFunctions.fnDeleteFromQuestionBank', name='fnDeleteFromQuestionBank'),
@@ -286,8 +285,8 @@ urlpatterns += patterns('',
     url(r'^loadHomeScreenMenu/$', 'myapp.homescreen.loadHomeScreenMenu', name='loadHomeScreenMenu'),#Lijin
     url(r'^saveHomeScreenMenu/$', 'myapp.homescreen.saveHomeScreenMenu', name='saveHomeScreenMenu'),#Lijin
     url(r'^FetchCurrentStatus/$', 'myapp.statusRelated.FetchCurrentStatusView', name='FetchCurrentStatus'),#Arun
-    url(r'^SetStatus/$', 'myapp.statusRelated.SetStatusView', name='SetStatus')#Arun
-  
+    url(r'^SetStatus/$', 'myapp.statusRelated.SetStatusView', name='SetStatus'),#Arun
+    url(r'^mobileLogin/$', 'myapp.loginLogoutRealted.mobileLogin', name='mobileLogin')  #URL for the login from mobile app - Lijin
 )
 
 
