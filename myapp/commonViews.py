@@ -226,11 +226,11 @@ def checkDomainExitsView(request):
         
         stream = StringIO(request.body)
         data = JSONParser().parse(stream)
-        if data['domainName'] == '':
-            data['domainName'] = urlparse(request.META.get('HTTP_REFERER')).hostname;
-            firstString = data['domainName'].split('.')[0];
-            if data['domainName'].split('.')[0] == 'www':
-                data['domainName'] = data['domainName'].strip('www.');
+        #if data['domainName'] == '':
+        data['domainName'] = urlparse(request.META.get('HTTP_REFERER')).hostname;
+            #firstString = data['domainName'].split('.')[0];
+        if data['domainName'].split('.')[0] == 'www':
+            data['domainName'] = data['domainName'].strip('www.');
 
         DomainExits = dbconn.system_js.fnCheckDomainExits(data['domainName']);
         return Response(json.dumps(DomainExits, default=json_util.default))
