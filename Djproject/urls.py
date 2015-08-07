@@ -286,7 +286,7 @@ urlpatterns += patterns('',
     url(r'^saveHomeScreenMenu/$', 'myapp.homescreen.saveHomeScreenMenu', name='saveHomeScreenMenu'),#Lijin
     url(r'^FetchCurrentStatus/$', 'myapp.statusRelated.FetchCurrentStatusView', name='FetchCurrentStatus'),#Arun
     url(r'^SetStatus/$', 'myapp.statusRelated.SetStatusView', name='SetStatus'),#Arun
-    url(r'^mobileLogin/$', 'myapp.loginLogoutRealted.mobileLogin', name='mobileLogin')  #URL for the login from mobile app - Lijin
+    url(r'^mobileLogin/$', 'myapp.loginLogoutRealted.mobileLogin', name='mobileLogin'),  #URL for the login from mobile app - Lijin
     url(r'^getCourseSyllabus4CandidateView/$', 'myapp.candidateCourseRelated.getCourseSyllabus4CandidateView', name='getCourseSyllabus4CandidateView'), #by Arun for managing candidate course full view
     url(r'^getElement4CandidateView/$', 'myapp.candidateCourseRelated.getElement4CandidateView', name='getElement4CandidateView'), #by Arun for managing candidate course full view
 
