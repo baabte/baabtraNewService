@@ -91,6 +91,7 @@ urlpatterns = patterns('',
     url(r'^RemoveFileFromServer/$', 'myapp.commonViews.RemoveFileFromServerView', name='RemoveFileFromServer'),#added by jihin for Load Role Under Company
     url(r'^SaveAppSettings/$', 'myapp.commonViews.SaveAppSettingsView', name='SaveAppSettings'),#added by jihin for Save App Settings
     url(r'^UploadProfilePic/$', 'myapp.commonViews.UploadProfilePicView', name='UploadProfilePic'),#added by jihin for upload profile picture
+    url(r'^checkUserIdExistence/$', 'myapp.commonViews.checkUserIdExistenceView', name='checkUserIdExistence'),
     url(r'^InsertDomain/$', 'myapp.domainRelatedViews.InsertDomainView', name='InsertDomain'),  #URL for the insert domain,added by jihin
     url(r'^GetExitCriteria/$', 'myapp.views.GetExitCriteriaView', name='GetExitCriteria'), #by Arun
     url(r'^SaveCourseElementForm/$', 'myapp.views.SaveCourseElementFormView', name='SaveCourseElementForm'),  #by Arun
@@ -141,6 +142,8 @@ urlpatterns = patterns('',
     url(r'^saveCandidatesAttendance/$', 'myapp.attendenceRelatedViews.saveCandidatesAttendance', name='saveCandidatesAttendance'), #by lijin
     url(r'^updateCandidatesAttendance/$', 'myapp.attendenceRelatedViews.updateCandidatesAttendance', name='updateCandidatesAttendance'), #by lijin
     url(r'^fnLoadMenteesMarkedAttendanceFromBatch/$', 'myapp.attendenceRelatedViews.fnLoadMenteesMarkedAttendanceFromBatch', name='fnLoadMenteesMarkedAttendanceFromBatch'), #by lijin
+    url(r'^fetchUserResults/$', 'myapp.reports.fetchUserResultsView', name='fetchUserResults'), #for load Order Form By Id 
+    url(r'^fetchUserResultReport/$', 'myapp.reports.fetchUserResultReportView', name='fetchUserResultReport'), #for load Order Form By Id 
 
 
     #url(r'^userRegisterationPayment/$', 'myapp.paymentRelatedViews.userRegisterationPaymentView', name='userRegisterationPayment')
@@ -163,6 +166,8 @@ urlpatterns = patterns('',
     url(r'^fnBulkEnroll/$', 'myapp.enrollment.fnBulkEnroll', name='fnBulkEnroll'), #for bulk enrollment
     url(r'^fnLoadUserReport/$', 'myapp.enrollment.fnLoadUserReport', name='fnLoadUserReport'), #for bulk enrollment
     url(r'^fnLoadCompnayUsers/$', 'myapp.user.fnLoadCompnayUsers', name='fnLoadCompnayUsers'), #for bulk enrollment
+    url(r'^fetchUsersByDynamicSearch/$', 'myapp.user.fetchUsersByDynamicSearchView', name='fetchUsersByDynamicSearch'), #for fetch Users By Dynamic Search
+    url(r'^fnFetchFormFeildsForSearch/$', 'myapp.user.fnFetchFormFeildsForSearchView', name='fnFetchFormFeildsForSearch'), #for Fetch Form Feilds For Search
     url(r'^fnLoadMenteesForPayment/$', 'myapp.user.fnLoadMenteesForPayment', name='fnLoadMenteesForPayment'), #for paymnet option after enrolling : Lijin - on 27-5-2015
     url(r'^FetchUsersToCourseAllocate/$', 'myapp.user.FetchUsersToCourseAllocateView', name='FetchUsersToCourseAllocate'), #for bulk enrollment
     url(r'^AllocateUsersToCourse/$', 'myapp.user.AllocateUsersToCourseView', name='AllocateUsersToCourse'), #for bulk enrollment
@@ -172,7 +177,9 @@ urlpatterns = patterns('',
     url(r'^loadOrderFormById/$', 'myapp.user.loadOrderFormByIdView', name='loadOrderFormById'), #for load Order Form By Id 
     
     url(r'^verifyCandidateByCourse/$', 'myapp.user.verifyCandidateByCourse', name='verifyCandidateByCourse'), #for verifying order form by course Created by Lijin
-    
+    url(r'^fnSaveCandidateMapping/$', 'myapp.user.fnSaveCandidateMapping', name='fnSaveCandidateMapping'), #for saving parent-candidate mapping into parent's user details, Created by Lijin
+    url(r'^fnLoadParents/$', 'myapp.user.fnLoadParents', name='fnLoadParents'), #for loading parents, Created by Lijin
+    url(r'^fnLoadMappedCandidatesForParent/$', 'myapp.user.fnLoadMappedCandidatesForParent', name='fnLoadMappedCandidatesForParent'), #for loading candidates that are mapped to a parent, Created by Lijin
     url(r'^loadBatches/$', 'myapp.Batches.loadBatches', name='loadBatches'), #for loading batches
     url(r'^loadExistingCoursesUnderBatch/$', 'myapp.Batches.loadExistingCoursesUnderBatch', name='loadExistingCoursesUnderBatch'), #for loading batches
     url(r'^addCoursesToBatch/$', 'myapp.Batches.addCoursesToBatch', name='addCoursesToBatch'), #for adding courses to batch
@@ -233,7 +240,9 @@ urlpatterns = patterns('',
     url(r'^LoadCoureBatchByBatchId/$', 'myapp.Batches.LoadCoureBatchByBatchIdView', name='LoadCoureBatchByBatchId'), #for Load Coure Batch By Batch Id
     url(r'^saveBatchTimelineChanges/$', 'myapp.Batches.saveBatchTimelineChangesView', name='saveBatchTimelineChanges'), #for save Batch Timeline Changes
     url(r'^LoadUserCourseDetails/$', 'myapp.Batches.LoadUserCourseDetailsView', name='LoadUserCourseDetails'), #for Load User Course Details
-    url(r'^userbaabtraComProfileData/$', 'myapp.baabtraComProfile.userbaabtraComProfileData', name='userbaabtraComProfileData'),
+    url(r'^userCourseDetailsOF/$', 'myapp.payment.userCourseDetailsOFView', name='userCourseDetailsOF'), #by lijin
+    
+    url(r'^loadUserProfileDetails/$', 'myapp.baabtraComProfile.loadUserProfileDetailsView', name='loadUserProfileDetails'),
     url(r'^baabtraComProfileData/$', 'myapp.baabtraComProfile.baabtraComProfileData', name='baabtraComProfileData'),
     url(r'^changelanguage/$', 'myapp.profile.changelanguage', name='changelanguage'),
     url(r'^GetCode/$', 'myapp.commonCalls.GetCode', name='GetCode'),
@@ -260,7 +269,6 @@ urlpatterns = patterns('',
     url(r'^FetchAllQuestionBundles/$', 'myapp.questionBankReletedViews.FetchAllQuestionBundlesView', name='FetchAllQuestionBundles'),
     url(r'^ModifyQuestionBundles/$', 'myapp.questionBankReletedViews.ModifyQuestionBundlesView', name='ModifyQuestionBundles'),
     url(r'^FetchQuestionBankList/$', 'myapp.questionBankReletedViews.FetchQuestionBankListView', name='FetchQuestionBankList'),
-
     url(r'^fnSubmitAssignment/$', 'myapp.assignmentFunctions.fnSubmitAssignment', name='fnSubmitAssignment'),
     url(r'^fnAddToQuestionBank/$', 'myapp.interviewFunctions.fnAddToQuestionBank', name='fnAddToQuestionBank'),
     url(r'^fnDeleteFromQuestionBank/$', 'myapp.interviewFunctions.fnDeleteFromQuestionBank', name='fnDeleteFromQuestionBank'),
@@ -269,5 +277,28 @@ urlpatterns = patterns('',
     url(r'^sendBatchStatusUpdateMail/$', 'myapp.emailSms.sendBatchStatusUpdateMail', name='sendBatchStatusUpdateMail') #by Lijin on 9-6-2015 for sending email notification on batch status update.
 
 )+ static('/files/', document_root=settings.FILEUPLOAD_PATH)
+
+
+urlpatterns += patterns('',
+    # Examples:
+    # url(r'^$', 'Djproject.views.home', name='home'),
+    url(r'^loadHomeScreenMenu/$', 'myapp.homescreen.loadHomeScreenMenu', name='loadHomeScreenMenu'),#Lijin
+    url(r'^saveHomeScreenMenu/$', 'myapp.homescreen.saveHomeScreenMenu', name='saveHomeScreenMenu'),#Lijin
+    url(r'^FetchCurrentStatus/$', 'myapp.statusRelated.FetchCurrentStatusView', name='FetchCurrentStatus'),#Arun
+    url(r'^SetStatus/$', 'myapp.statusRelated.SetStatusView', name='SetStatus'),#Arun
+    url(r'^mobileLogin/$', 'myapp.loginLogoutRealted.mobileLogin', name='mobileLogin'),  #URL for the login from mobile app - Lijin
+    url(r'^getCourseSyllabus4CandidateView/$', 'myapp.candidateCourseRelated.getCourseSyllabus4CandidateView', name='getCourseSyllabus4CandidateView'), #by Arun for managing candidate course full view
+    url(r'^getElement4CandidateView/$', 'myapp.candidateCourseRelated.getElement4CandidateView', name='getElement4CandidateView'), #by Arun for managing candidate course full view
+    url(r'^loadUserNotifications/$', 'myapp.notification.loadUserNotifications', name='loadUserNotifications'),#Lijin 
+    url(r'^markNotificationAsRead/$', 'myapp.notification.markNotificationAsRead', name='markNotificationAsRead'),#Lijin 
+    url(r'^newNotification/$', 'myapp.notification.newNotification', name='newNotification'),#Lijin 
+
+    url(r'^sendMessage/$', 'myapp.communications.sendMessage', name='sendMessage'),#Lijin
+    url(r'^loadInbox/$', 'myapp.communications.loadInbox', name='loadInbox'),#Lijin 
+    url(r'^getUserName/$', 'myapp.communications.getUserName', name='getUserName'),#Lijin 
+    url(r'^loadSingleMessage/$', 'myapp.communications.loadSingleMessage', name='loadSingleMessage'),#Lijin 
+    url(r'^fnLoadParent/$', 'myapp.communications.fnLoadParent', name='fnLoadParent'),#Lijin 
+
+)
 
 
