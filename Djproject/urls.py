@@ -293,7 +293,8 @@ urlpatterns += patterns('',
     url(r'^markNotificationAsRead/$', 'myapp.notification.markNotificationAsRead', name='markNotificationAsRead'),#Lijin 
     url(r'^newNotification/$', 'myapp.notification.newNotification', name='newNotification'),#Lijin 
     url(r'^loadAllBranchesUnderCompany/$', 'myapp.branchRelatedView.loadAllBranchesUnderCompanyView', name='loadAllBranchesUnderCompany'),#Jihin 
-    
+    url(r'^MultiRegister/$', 'myapp.RegisterRelated.MultiRegisterView', name='MultiRegister'),#Arun
+
     url(r'^sendMessage/$', 'myapp.communications.sendMessage', name='sendMessage'),#Lijin
     url(r'^loadInbox/$', 'myapp.communications.loadInbox', name='loadInbox'),#Lijin 
     url(r'^getUserName/$', 'myapp.communications.getUserName', name='getUserName'),#Lijin 
