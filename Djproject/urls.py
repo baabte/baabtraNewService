@@ -294,6 +294,7 @@ urlpatterns += patterns('',
     url(r'^newNotification/$', 'myapp.notification.newNotification', name='newNotification'),#Lijin 
     url(r'^loadAllBranchesUnderCompany/$', 'myapp.branchRelatedView.loadAllBranchesUnderCompanyView', name='loadAllBranchesUnderCompany'),#Jihin 
     url(r'^MultiRegister/$', 'myapp.RegisterRelated.MultiRegisterView', name='MultiRegister'),#Arun
+    url(r'^checkRegDomainExits/$', 'myapp.commonViews.checkRegDomainExitsView', name='checkRegDomainExits'),#added by jihin for check Domain Exits
 
     url(r'^sendMessage/$', 'myapp.communications.sendMessage', name='sendMessage'),#Lijin
     url(r'^loadInbox/$', 'myapp.communications.loadInbox', name='loadInbox'),#Lijin 
