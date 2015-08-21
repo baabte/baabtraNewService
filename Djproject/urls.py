@@ -295,13 +295,13 @@ urlpatterns += patterns('',
     url(r'^loadAllBranchesUnderCompany/$', 'myapp.branchRelatedView.loadAllBranchesUnderCompanyView', name='loadAllBranchesUnderCompany'),#Jihin 
     url(r'^loadMenteesBatchDetails/$', 'myapp.attendenceRelatedViews.loadMenteesBatchDetailsView', name='loadMenteesBatchDetails'),#Jihin
     url(r'^loadMenteeMarkedAttendanceFromBatch/$', 'myapp.attendenceRelatedViews.loadMenteeMarkedAttendanceFromBatchView', name='loadMenteeMarkedAttendanceFromBatch'),#Jihin  
-    
+    url(r'^MultiRegister/$', 'myapp.RegisterRelated.MultiRegisterView', name='MultiRegister'),#Arun
+    url(r'^checkRegDomainExits/$', 'myapp.commonViews.checkRegDomainExitsView', name='checkRegDomainExits'),#added by jihin for check Domain Exits
     url(r'^sendMessage/$', 'myapp.communications.sendMessage', name='sendMessage'),#Lijin
     url(r'^loadInbox/$', 'myapp.communications.loadInbox', name='loadInbox'),#Lijin 
     url(r'^getUserName/$', 'myapp.communications.getUserName', name='getUserName'),#Lijin 
     url(r'^loadSingleMessage/$', 'myapp.communications.loadSingleMessage', name='loadSingleMessage'),#Lijin 
-    url(r'^fnLoadParent/$', 'myapp.communications.fnLoadParent', name='fnLoadParent'),#Lijin 
-
+    url(r'^fnLoadParent/$', 'myapp.communications.fnLoadParent', name='fnLoadParent')#Lijin 
 )
 
 
