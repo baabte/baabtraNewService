@@ -290,6 +290,7 @@ urlpatterns += patterns('',
     url(r'^getCourseSyllabus4CandidateView/$', 'myapp.candidateCourseRelated.getCourseSyllabus4CandidateView', name='getCourseSyllabus4CandidateView'), #by Arun for managing candidate course full view
     url(r'^getElement4CandidateView/$', 'myapp.candidateCourseRelated.getElement4CandidateView', name='getElement4CandidateView'), #by Arun for managing candidate course full view
     url(r'^loadUserNotifications/$', 'myapp.notification.loadUserNotifications', name='loadUserNotifications'),#Lijin 
+    url(r'^evaluationElementFetch/$', 'myapp.evaluationRelatedViews.EvaluationElementFetchView', name='evaluationElementFetch'), #by Arun
     url(r'^markNotificationAsRead/$', 'myapp.notification.markNotificationAsRead', name='markNotificationAsRead'),#Lijin 
     url(r'^newNotification/$', 'myapp.notification.newNotification', name='newNotification'),#Lijin 
     url(r'^loadAllBranchesUnderCompany/$', 'myapp.branchRelatedView.loadAllBranchesUnderCompanyView', name='loadAllBranchesUnderCompany'),#Jihin 
