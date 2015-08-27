@@ -14,7 +14,7 @@ from bson.objectid import ObjectId
 from django.conf import settings
 from django.core.mail import EmailMessage
 
-#creater :Midhun Sudhakar
+#creater :Jihin
 @csrf_exempt
 @api_view(['GET','POST'])
 def loadUserProfileDetailsView(request):  #this service will save add and update coures details
@@ -27,7 +27,7 @@ def loadUserProfileDetailsView(request):  #this service will save add and update
         try:
             stream = StringIO(request.body)
             data = JSONParser().parse(stream)
-            profileData=dbconn.system_js.fnLoadUserProfileDetails(data["userloginId"], data["type"])    
+            profileData=dbconn.system_js.fnLoadUserProfileDetails(data)    
         except ValueError:
             return Response(json.dumps(ValueError, default=json_util.default))
         return Response(json.dumps(profileData, default=json_util.default))
