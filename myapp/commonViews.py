@@ -282,4 +282,22 @@ def checkRegDomainExitsView(request):
         DomainExits = dbconn.system_js.fnCheckRegDomainExits(data['domainName']);
         return Response(json.dumps(DomainExits, default=json_util.default))
     else:    
-        return Response("failure")        
+        return Response("failure")
+
+#Created by Jihin
+#For value Exists check
+@csrf_exempt
+@api_view(['GET','POST'])
+def valueExistsView(request):
+    #connect to our local mongodb
+    db = Connection(settings.MONGO_SERVER_ADDR,settings.MONGO_PORT)
+    #get a connection to our database
+    dbconn = db[settings.MONGO_DB]
+
+    if request.method == 'POST':
+        stream = StringIO(request.body)
+        data = JSONParser().parse(stream)
+        DomainExits = dbconn.system_js.fnValueExists(data);
+        return Response(json.dumps(DomainExits, default=json_util.default))
+    else:    
+        return Response("failure")      

@@ -302,7 +302,10 @@ urlpatterns += patterns('',
     url(r'^loadInbox/$', 'myapp.communications.loadInbox', name='loadInbox'),#Lijin 
     url(r'^getUserName/$', 'myapp.communications.getUserName', name='getUserName'),#Lijin 
     url(r'^loadSingleMessage/$', 'myapp.communications.loadSingleMessage', name='loadSingleMessage'),#Lijin 
-    url(r'^fnLoadParent/$', 'myapp.communications.fnLoadParent', name='fnLoadParent')#Lijin 
+    url(r'^fnLoadParent/$', 'myapp.communications.fnLoadParent', name='fnLoadParent'),#Lijin 
+    url(r'^valueExists/$', 'myapp.commonViews.valueExistsView', name='valueExists'),#jihin
+    url(r'^saveSubject/$', 'myapp.course.saveSubjectView', name='saveSubject'),#Jihin
+    url(r'^loadSubject/$', 'myapp.course.loadSubjectView', name='loadSubject'),#Jihin
 )
 
 
